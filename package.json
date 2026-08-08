@@ -1,0 +1,55 @@
+{
+  "name": "n8n-nodes-claix",
+  "version": "0.1.5",
+  "description": "n8n community node for Claix — extract PDF, Word and Excel documents to structured JSON",
+  "license": "MIT",
+  "homepage": "https://www.claix.dev",
+  "keywords": [
+    "n8n-community-node-package",
+    "claix",
+    "pdf",
+    "docx",
+    "excel",
+    "json",
+    "document-extraction"
+  ],
+  "author": {
+    "name": "Claix",
+    "email": "hola@claix.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaelproodoos/n8n-nodes-claix.git"
+  },
+  "scripts": {
+    "build": "npx n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "npx n8n-node dev",
+    "lint": "npx n8n-node lint",
+    "lint:fix": "npx n8n-node lint --fix",
+    "release": "npx n8n-node release",
+    "prepublishOnly": "npm run lint && npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/ClaixApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Claix/Claix.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.23.0",
+    "eslint": "9.39.4",
+    "prettier": "3.8.3",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "node": "n8n-nodes-claix",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Data & Storage", "Development"],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://www.claix.dev/documentation"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://www.claix.dev/documentation"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+  <rect width="60" height="60" rx="8" fill="#000000"/>
+  <g fill="none" stroke="#39FF14" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Top cube -->
+    <path d="M30 14 L23 17.5 L30 21 L37 17.5 Z"/>
+    <path d="M23 17.5 L23 25.5 M30 21 L30 29 M37 17.5 L37 25.5"/>
+    <path d="M23 25.5 L30 25.5 L37 25.5"/>
+    <path d="M37 25.5 L30 29 L23 25.5"/>
+    <!-- Bottom-left cube -->
+    <path d="M23 22 L16 25.5 L23 29 L30 25.5 Z"/>
+    <path d="M16 25.5 L16 33.5 M23 29 L23 37 M30 25.5 L30 33.5"/>
+    <path d="M16 33.5 L23 37 L30 33.5"/>
+    <!-- Bottom-right cube -->
+    <path d="M37 22 L44 25.5 L37 29 L30 25.5 Z"/>
+    <path d="M44 25.5 L44 33.5 M37 29 L37 37 M30 33.5 L30 25.5"/>
+    <path d="M44 33.5 L37 37 L30 33.5"/>
+  </g>
+</svg>
