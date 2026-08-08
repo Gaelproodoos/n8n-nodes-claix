@@ -20,10 +20,7 @@ export class Claix implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Claix',
 		name: 'claix',
-		icon: {
-			light: 'file:claix.svg',
-			dark: 'file:claix.dark.svg',
-		},
+		icon: 'file:claix.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
