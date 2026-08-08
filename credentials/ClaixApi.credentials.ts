@@ -1,12 +1,9 @@
 import type {
 	IAuthenticateGeneric,
-	ICredentialTestRequest,
 	ICredentialType,
 	Icon,
 	INodeProperties,
 } from 'n8n-workflow';
-
-import { CLAIX_API_BASE_URL } from '../nodes/Claix/claix.helpers';
 
 export class ClaixApi implements ICredentialType {
 	name = 'claixApi';
@@ -42,22 +39,5 @@ export class ClaixApi implements ICredentialType {
 				'x-api-key': '={{$credentials.apiKey}}',
 			},
 		},
-	};
-
-	test: ICredentialTestRequest = {
-		request: {
-			baseURL: CLAIX_API_BASE_URL,
-			url: '/pdf-json',
-			method: 'POST',
-		},
-		rules: [
-			{
-				type: 'responseCode',
-				properties: {
-					value: 400,
-					message: 'Connection successful! Claix API key is valid',
-				},
-			},
-		],
 	};
 }

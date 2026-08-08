@@ -1,6 +1,9 @@
 import type {
+	ICredentialTestFunctions,
+	ICredentialsDecrypted,
 	IExecuteFunctions,
 	IDataObject,
+	INodeCredentialTestResult,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
@@ -9,6 +12,7 @@ import type {
 import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import {
+	CLAIX_API_BASE_URL,
 	buildMultipartBody,
 	getDefaultFilename,
 	getDefaultMimeType,
@@ -36,6 +40,7 @@ export class Claix implements INodeType {
 			{
 				name: 'claixApi',
 				required: true,
+				testedBy: 'testClaixApiCredential',
 			},
 		],
 		properties: [
@@ -104,6 +109,69 @@ export class Claix implements INodeType {
 					'Name of the binary property on the incoming item that contains the document file',
 			},
 		],
+	};
+
+	methods = {
+		credentialTest: {
+			async testClaixApiCredential(
+				this: ICredentialTestFunctions,
+				credential: ICredentialsDecrypted,
+			): Promise<INodeCredentialTestResult> {
+				const apiKey = credential.data?.apiKey as string | undefined;
+
+				if (!apiKey?.trim()) {
+					return {
+						status: 'Error',
+						message: 'API Key is required',
+					};
+				}
+
+				try {
+					const response = await fetch(`${CLAIX_API_BASE_URL}/pdf-json`, {
+						method: 'POST',
+						headers: {
+							'x-api-key': apiKey,
+						},
+					});
+
+					if (response.ok) {
+						return {
+							status: 'OK',
+							message: 'Connection successful! Claix API key is valid',
+						};
+					}
+
+					const statusCode = response.status;
+
+					if (statusCode === 401 || statusCode === 403) {
+						return {
+							status: 'Error',
+							message: 'Invalid Claix API key. Check your API key in the Claix dashboard.',
+						};
+					}
+
+					if (statusCode === 400) {
+						return {
+							status: 'OK',
+							message: 'Connection successful! Claix API key is valid',
+						};
+					}
+
+					return {
+						status: 'Error',
+						message: `Credential test failed (HTTP ${statusCode})`,
+					};
+				} catch (error) {
+					return {
+						status: 'Error',
+						message:
+							error instanceof Error
+								? error.message
+								: 'Credential test failed due to a network error',
+					};
+				}
+			},
+		},
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {

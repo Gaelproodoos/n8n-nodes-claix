@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-claix",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "n8n community node for Claix — extract PDF, Word and Excel documents to structured JSON",
   "license": "MIT",
   "homepage": "https://www.claix.dev",
