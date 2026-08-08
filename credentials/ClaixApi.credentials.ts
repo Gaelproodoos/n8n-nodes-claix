@@ -13,7 +13,10 @@ export class ClaixApi implements ICredentialType {
 
 	displayName = 'Claix API';
 
-	icon: Icon = 'file:../nodes/Claix/claix.svg';
+	icon: Icon = {
+		light: 'file:../nodes/Claix/claix.svg',
+		dark: 'file:../nodes/Claix/claix.dark.svg',
+	};
 
 	documentationUrl = 'https://www.claix.dev/documentation';
 

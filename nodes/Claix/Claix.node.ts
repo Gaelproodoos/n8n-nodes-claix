@@ -20,7 +20,10 @@ export class Claix implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Claix',
 		name: 'claix',
-		icon: 'file:claix.svg',
+		icon: {
+			light: 'file:claix.svg',
+			dark: 'file:claix.dark.svg',
+		},
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
@@ -177,10 +180,6 @@ export class Claix implements INodeType {
 						pairedItem: { item: itemIndex },
 					});
 					continue;
-				}
-
-				if (error instanceof NodeOperationError || error instanceof NodeApiError) {
-					throw error;
 				}
 
 				throw new NodeApiError(this.getNode(), error as JsonObject, { itemIndex });
